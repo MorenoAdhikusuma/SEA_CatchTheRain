@@ -17,6 +17,8 @@ RED = (255,0,0)
 BLK = (0,0,0)
 
 SCORE_FILE = "scores.txt"
+SCORE_SOUND = pygame.mixer.Sound(os.path.join('SFX', 'ScoreSFX.mp3'))
+SCORE_SOUND.set_volume(0.3)
 
 def load_scores():
     scores = []
@@ -133,6 +135,7 @@ def main_game():
         if block.colliderect(paddle):
             block.y = 0
             block.x = random.randint(0, W - 20)
+            SCORE_SOUND.play()
             score += 1
             b_speed += 0.4
 
